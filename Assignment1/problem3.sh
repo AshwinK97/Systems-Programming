@@ -13,22 +13,29 @@ alist=("a" "b" "a" "a" "b")
 score=0 # store the score
 i=0     # counter for loop
 
+# iterate through each question
 for q in ${qlist[@]}
 do
+	# print the current quetsion
 	printf "${q//_/ }"
+	# get an answoer fromm the user
 	read answer
 	
+	# check if answer matches
 	if [ $answer = "${alist[i]}" ]
 	then                                         
-		score=$(($score + 1))
+		score=$(($score + 1)) # incremnt user score
 	fi
 
-	i=$(($i + 1))
+	i=$(($i + 1)) # increment loop counter
 	printf "\n"
 done
 
-printf "Test score mailed to root\n"
+# print the score and email message
+printf "You scored $score points\n"
+printf "Your score has been emailed to you\n"
 
+# email the score to root
 mail -s "Score from 'problem3.sh'" "root"  <<EOF
 Your score was: $score
 EOF
