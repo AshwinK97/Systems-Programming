@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# infinite loop
 while true
 do
-	echo $(date +%r)
+	# get the formatted date and output to file
+	echo $(date +%r) >> sampling.txt
+
+	# wait for 5 seconds
 	sleep 5 
 done

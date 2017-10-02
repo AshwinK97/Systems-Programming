@@ -18,13 +18,14 @@ for q in ${qlist[@]}
 do
 	# print the current quetsion
 	printf "${q//_/ }"
+
 	# get an answoer fromm the user
 	read answer
 	
 	# check if answer matches
 	if [ $answer = "${alist[i]}" ]
 	then                                         
-		score=$(($score + 1)) # incremnt user score
+		score=$(($score + 1)) # increment user score
 	fi
 
 	i=$(($i + 1)) # increment loop counter
