@@ -4,7 +4,7 @@
 while true
 do
 	# get the formatted date and output to file
-	echo $(date +%r) >> sampling.txt
+	date +%r >> sampling.txt
 
 	# wait for 5 seconds
 	sleep 5 
