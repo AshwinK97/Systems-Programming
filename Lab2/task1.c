@@ -16,39 +16,35 @@ char* find_replace(char* word, char find, char replace){
 int main(int argc, char *argv[]) {
 	FILE *f; // pointer for input file
 	FILE *f2; // pointer for output file
-
-	// open input.txt and check if it is readable
+	
+	// open Input.txt and check if it is readable
 	if ((f=fopen("Input.txt", "r")) == NULL) {
 		printf("Unable to open 'Input.txt' for reading\n");
 		exit(0);
 	}
 	
-	// open Heaven.txt and check if it is writable
-	if ((f2=fopen("Heaven.txt", "w")) == NULL) {
-		printf("Unable to open 'Heaven.txt' for writing\n");
+	// open Dante.txt and check if it is writable
+	if ((f2=fopen("Dante.txt", "w")) == NULL) {
+		printf("Unable to open 'Dante.txt' for writing\n");
 		exit(0);
 	}
 
-	// array of 150 words 20 characters each
-	char words[150][20];
-	// track how many words are read
-	int wc = 0;
+	// single array to hold entire paragraph
+	char text[1000];
 
-	while (1) {
-		// read word from file into word array
-		if (fscanf(f, "%s", words[wc]) != 1)
-			break; // if we could not read a string, break
-		
-		// check if 'a' is in current word
-		if (strchr(words[wc], 'a') > 0)
-			// find all 'a' and replace with 'b', and store in array
-			strcpy(words[wc], find_replace(words[wc], 'a', 'b'));
-		
-		fputs(words[wc], f2); // write word to file
-		fputs("\n", f2); // write newline to file
+	// track how many charcters are read
+	int cc = 0;
+	
+	// read char from file until EOF
+	while ((text[cc] = getc(f)) != EOF)
+		cc++; // increment counter
+	
+	// use find and replace to replace all 'a' with 'b'
+	strcpy(text, find_replace(text, 'a', 'b'));
 
-		wc++; // increment counter
-	}
+	int i;
+	for (i=0; i<cc; i++)
+		fputc(text[i], f2);
 	
 	// close the file streams
 	fclose(f);

@@ -1,2 +1,3 @@
 build:
-	gcc main.c -o main
+	gcc task1.c -o t1out
+	gcc task2.c -o t2out
