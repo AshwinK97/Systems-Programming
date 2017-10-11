@@ -32,11 +32,12 @@ For problem 2, we have to wait 5 seconds and then write the current time to 'sam
 
 ## problem3.sh
 
-For problem 3, we have to make a multiple choice consisting of 5 questions with 2 possible answers for each.  
-For the mail functionality to work, you have to install GNU mailuitls
+For problem 3, we have to make a multiple choice quiz consisting of 5 questions with 2 possible answers for each.  
+  
+For the mail functionality to work, GNU mailuitls must be installed.
 
 #### Process
-1. store all of the question in an array
+1. store all of the questions in an array
 2. store all of the correct answers in an array
 3. initialize score and loop counter to 0
 4. iterate through each question in array, print each question
