@@ -34,7 +34,7 @@ For problem 2, we have to wait 5 seconds and then write the current time to 'sam
 
 For problem 3, we have to make a multiple choice quiz consisting of 5 questions with 2 possible answers for each.  
   
-For the mail functionality to work, GNU mailuitls must be installed.
+For the mail functionality to work, GNU mailutils must be installed.
 
 #### Process
 1. store all of the questions in an array
