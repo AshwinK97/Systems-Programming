@@ -2,7 +2,11 @@
 Name: **Ashwin Kamalakannan**  
 ID  : **100584423**  
 
-These scripts use the bash interperator located in /bin/bash  
+These scripts use the bash interperator located in /bin/bash
+#### To run each script:
+1. download files and change to the containing directory
+2. type `chmod u+x problem1.sh problem2.sh problem3.sh`
+3. type `./[script].sh` where `[script]` is the name of the script you want to run  
 
 ## problem1.sh
 
