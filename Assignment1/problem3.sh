@@ -36,7 +36,7 @@ done
 printf "You scored $score points\n"
 printf "Your score has been emailed to you\n"
 
-# email the score to root
+# use GNU mailutils to email the score to root
 mail -s "Score from 'problem3.sh'" "root"  <<EOF
 Your score was: $score
 EOF

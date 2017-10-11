@@ -3,12 +3,12 @@
 #include <string.h>
 
 // find and replace a character within a string
-char* find_replace(char* word, char find, char replace){
-	char *current_pos = strchr(word, find); // get pointer to first occurance of find
+char* find_replace(char* word, char* find, char* replace){
+	char *current_pos = strstr(word, find); // get pointer to first occurance of find
 	// loop as long as current positon is valid
 	while (current_pos) {
 		*current_pos = replace; // swap occurence of find with replace
-		current_pos = strchr(current_pos,find); // get next occurence of find
+		current_pos = strstr(current_pos,find); // get next occurence of find
 	}
 	return word;
 }
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 		cc++; // increment counter
 	
 	// use find and replace to replace all 'a' with 'b'
-	strcpy(text, find_replace(text, 'a', 'b'));
+	strcpy(text, find_replace(text, "The", "AAA"));
 
 	int i;
 	for (i=0; i<cc; i++)
