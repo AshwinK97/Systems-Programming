@@ -8,21 +8,21 @@ void find_replace(char *text, char *find, char *replace)
 	char *p = strstr(text, find); // get pointer to find in text
     do {   
         if(p) { // if p doesn't point to null
-            char buf[1500]; // temporary string
+            char buf[1000]; // temporary string
             memset(buf,'\0',strlen(buf)); // add null terminator to end
 
-            // if the find ///////////////////////// CHANGE THIS
+            // if the entire text is the find string
             if(text == p) {
                 strcpy(buf,replace); // copy replace into buffer
                 strcat(buf,p+strlen(find)); // concat p to buffer
-            } else {
-                strncpy(buf,text,strlen(text) - strlen(p));
-                strcat(buf,replace);
-                strcat(buf,p+strlen(find));
+            } else { // if find was only part of the text
+                strncpy(buf,text,strlen(text) - strlen(p)); // copy the text before the find to buffer
+                strcat(buf,replace); // concat the replace to buffer
+                strcat(buf,p+strlen(find)); // contact the rest of the string to buffer
             }
 
-            memset(text,'\0',strlen(text));
-            strcpy(text,buf);
+            //memset(text,'\0',strlen(text)); // add null terminator to the end of string
+            strcpy(text,buf); // copy buffer to text
         }   
 
     } while(p && (p = strstr(text, find)));
@@ -63,15 +63,15 @@ int main(int argc, char *argv[]) {
 
 	// array of words to replace
 	char replace[9][50] = {
-		"Paradisio",
-		"using Windows 8.1",
-		"Windows 8.1",
-		"to use 8.1",
-		"screen",
-		"Before a monitor",
-		"GUI",
-		"UNIX",
-		"Shakespeare",
+		"INFERNOX",
+		"IN DARK WOODS",
+		"THOSE WOODS",
+		"TO ENTER",
+		"CREST",
+		"BELOW A HILL",
+		"SHOULDERS",
+		"PLANET",
+		"DANTE",
 	};
 	
 	// read char from file until EOF
