@@ -3,29 +3,22 @@
 #include <string.h>
 
 // find all occurences of str, in stc and replace with rep
-void find_replace(char *text, char *find, char *replace)
+void find_replace(char *text, char *out, char *find, char *replace)
 {
 	char *p = strstr(text, find); // get pointer to find in text
     do {   
         if(p) { // if p doesn't point to null
             char buf[1000]; // temporary string
-            memset(buf,'\0',strlen(buf)); // add null terminator to end
+            memset(buf,'\0',strlen(buf)); // add null terminator to buffer
+            strncpy(buf,text,strlen(text) - strlen(p)); // copy the text before the find to buffer
+            strcat(buf,replace); // concat the replace to buffer
+            strcat(buf,p+strlen(find)); // contact the rest of the string to buffer
 
-            // if the entire text is the find string
-            if(text == p) {
-                strcpy(buf,replace); // copy replace into buffer
-                strcat(buf,p+strlen(find)); // concat p to buffer
-            } else { // if find was only part of the text
-                strncpy(buf,text,strlen(text) - strlen(p)); // copy the text before the find to buffer
-                strcat(buf,replace); // concat the replace to buffer
-                strcat(buf,p+strlen(find)); // contact the rest of the string to buffer
-            }
-
-            //memset(text,'\0',strlen(text)); // add null terminator to the end of string
-            strcpy(text,buf); // copy buffer to text
+            memset(text,'\0',strlen(text)); // add null terminator to modified text
+            strcpy(out,buf); // copy buffer to output string
         }   
 
-    } while(p && (p = strstr(text, find)));
+    } while(p && (p = strstr(text, find))); // loop as long as p exists in text
 }
 
 int main(int argc, char *argv[]) {
@@ -63,30 +56,31 @@ int main(int argc, char *argv[]) {
 
 	// array of words to replace
 	char replace[9][50] = {
-		"INFERNOX",
-		"IN DARK WOODS",
-		"THOSE WOODS",
-		"TO ENTER",
-		"CREST",
-		"BELOW A HILL",
-		"SHOULDERS",
-		"PLANET",
-		"DANTE",
+		"Paradisio",
+		"using Windows 8.1",
+		"Windows 8.1",
+		"to use 8.1",
+		"screen",
+		"Before a monitor",
+		"GUI",
+		"UNIX",
+		"Shakespeare",
 	};
 	
 	// read char from file until EOF
 	while ((text[cc] = getc(f)) != EOF)
 		cc++; // increment counter
-
+	
+	char out[1500]; // to store output text
 	int i; // sentinal for loop
 	for (i = 0; i < swaps; i++) {
 		// use find and replace
-		find_replace(text, find[i], replace[i]);
+		find_replace(text, out, find[i], replace[i]);
 	}
 
 	// write new characters to file
 	for (i=0; i<cc; i++)
-		fputc(text[i], f2);
+		fputc(out[i], f2);
 	
 	// close the file streams
 	fclose(f);
