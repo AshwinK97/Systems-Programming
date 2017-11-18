@@ -13,7 +13,12 @@ int main(int argc, char *argv[]) {
 	}
 	
 	clock_t begin = clock(); // get start time
+	
 	printf("generate function returned with: %d\n", generate(f)); // call generate function
+	
 	double runtime = (double)(clock() - begin) / CLOCKS_PER_SEC; // get runtime = end - start
+	
 	printf("runtime: %fs\n", runtime); // display runtime
+	
+	fclose(f); // close file stream
 }
