@@ -8,7 +8,7 @@
 
 // display message while duplicating
 void display_message(int s) {
-printf("duplicate: still duplicating...\n" ); // display message
+	printf("duplicate: still duplicating...\n" ); // display message
 	alarm(1); // set for 1 second
 	signal(SIGALRM, display_message); // setup another alarm
 }
