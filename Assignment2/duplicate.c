@@ -8,9 +8,9 @@
 
 // display message while duplicating
 void display_message(int s) {
-     printf("duplicate: still duplicating...\n" ); // display message
-     alarm(1); // set for 1 second
-     signal(SIGALRM, display_message); // setup another alarm
+printf("duplicate: still duplicating...\n" ); // display message
+	alarm(1); // set for 1 second
+	signal(SIGALRM, display_message); // setup another alarm
 }
 
 int main (int argc, char *argv[]) {
@@ -43,7 +43,7 @@ int main (int argc, char *argv[]) {
 	int bytes = 0; // store the number of bytes read
 	
 	signal(SIGALRM, display_message); // set up alarm
-    alarm(1); // only display message after 1 second
+	alarm(1); // only display message after 1 second
 
 	// attempt to read 1 byte from source, loop as long as byte is read
 	while (read(src_fd, &c, 1) == 1) {
