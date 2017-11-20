@@ -4,6 +4,6 @@
 
 asmlinkage long sys_noopen(void) {
 	pid_t pid = getpid();
-	printf("noopen: pid is %d", pid);
+	printf("noopen: pid is %d\n", pid);
 	return pid;
 }
