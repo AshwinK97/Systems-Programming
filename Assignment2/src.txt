@@ -1,3 +1,0 @@
-some text
-some more text
-some number 12345
