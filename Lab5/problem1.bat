@@ -1,11 +1,5 @@
-@echo off
-:calledRoutine
-setlocal
+REM to start the default install visual studio development environment
+devenv
 
-%@Try%
-	devenv.exe
-%@EndTry%
-:@catch
-	echo "problem1: could not use 'devenv' command"
-	%@Try%
-		
+REM open a new command prompt window
+call cmd	
